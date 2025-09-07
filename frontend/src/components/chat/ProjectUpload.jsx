@@ -16,7 +16,7 @@ export default function ProjectUploadModal({ isOpen, onClose }) {
   const csvInputRef = useRef(null);
   const modalRef = useRef(null);
 
-  useEffect(() => {
+  useEffect(() =>{
     const handleEscape = (e) => {
       if (e.key === "Escape") onClose();
     };
