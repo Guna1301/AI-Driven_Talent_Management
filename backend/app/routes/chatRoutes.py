@@ -12,10 +12,6 @@ def extract_keywords(message):
     return [word for word in trigger_words if word in message.lower()]
 
 def parse_allocation_request(message):
-    """
-    Example: "allocate 2 AI interns to website redesign"
-    Returns: count=2, role="AI intern", project="website redesign"
-    """
     pattern = r'allocate\s+(\d+)\s+([a-zA-Z\s/]+?)\s+to\s+(.+)'
     match = re.search(pattern, message, re.IGNORECASE)
     if match:

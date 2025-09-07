@@ -7,9 +7,8 @@ project_bp = Blueprint("projects", __name__)
 
 @project_bp.route("/", methods=["GET"])
 def get_projects():
-    print("Fetching all projects")
     projects = list(db.projects.find())
-    print(projects)
+    # print(projects)
     for proj in projects:
         proj["_id"] = str(proj["_id"])
         for member in proj.get("members", []):
