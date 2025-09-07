@@ -2,6 +2,7 @@ import re
 from flask import Blueprint, request, jsonify, current_app as app
 from bson import ObjectId
 from .. import db
+import os
 import requests
 
 
@@ -9,7 +10,7 @@ import requests
 allocation_bp = Blueprint("allocate", __name__)
 
 gemini_url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
-api_key = "AIzaSyBEqNJKPPDh0Tbcjtf4gXD02nWQ_KpK_6I"
+api_key = os.getenv("GEMINI_API_KEY")
 
 def calculate_score(resource, job_description):
     resource_info = f"Name: {resource['name']}\nRole: {resource['role']}\nSkills: {', '.join(resource.get('skills', []))}\nExperience: {resource.get('experience', 0)} years"
